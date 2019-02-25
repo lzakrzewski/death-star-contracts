@@ -1,5 +1,5 @@
 {
-    "name": "lzakrzewski/death-start-contracts",
+    "name": "lzakrzewski/death-star-contracts",
     "type": "project",
     "authors": [
         {
@@ -32,10 +32,16 @@
     },
     "scripts": {
         "cs-fixer": "vendor/bin/php-cs-fixer fix --config=\"php_cs.dist\"",
+        "cs-fixer-ci": "vendor/bin/php-cs-fixer fix --dry-run --config=\"php_cs.dist\"",
         "static-analysis": "vendor/bin/phpstan analyse -c phpstan.neon --level=4 src/ && vendor/bin/phpstan analyse -c phpstan.neon --level=1 tests/",
         "tests-unit": "vendor/bin/phpunit --testsuite=Unit",
         "tests-all": [
             "@cs-fixer",
+            "@static-analysis",
+            "@tests-unit"
+        ],
+        "tests-ci": [
+            "@cs-fixer-ci",
             "@static-analysis",
             "@tests-unit"
         ]

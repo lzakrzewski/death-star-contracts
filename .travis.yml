@@ -7,4 +7,4 @@ before_install:
 - composer install
 
 script:
-- composer test-ci
+- composer tests-ci
